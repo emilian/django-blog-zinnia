@@ -47,4 +47,7 @@ urlpatterns = patterns(
     url(r'^(?P<object_id>\d+)/$',
         'entry_shortlink',
         name='zinnia_entry_shortlink'),
+    url(r'^(?P<slug>[-\w]+)/$',
+        'entry_sluglink',
+        name='zinnia_entry_sluglink'),
     )
