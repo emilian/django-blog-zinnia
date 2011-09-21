@@ -73,23 +73,6 @@ def retrieve_breadcrumbs(path, model_instance, root_name=''):
             breadcrumbs.extend(MODEL_BREADCRUMBS[key](model_instance))
             return breadcrumbs
 
-    date_match = DATE_REGEXP.match(path)
-    if date_match:
-        date_dict = date_match.groupdict()
-        path_date = datetime(
-            int(date_dict['year']),
-            date_dict.get('month') is not None and \
-            int(date_dict.get('month')) or 1,
-            date_dict.get('day') is not None and \
-            int(date_dict.get('day')) or 1)
-
-        date_breadcrumbs = [year_crumb(path_date)]
-        if date_dict['month']:
-            date_breadcrumbs.append(month_crumb(path_date))
-        if date_dict['day']:
-            date_breadcrumbs.append(day_crumb(path_date))
-        breadcrumbs.extend(date_breadcrumbs)
-
         return breadcrumbs
 
     url_components = [comp for comp in
