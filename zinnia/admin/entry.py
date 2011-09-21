@@ -180,7 +180,7 @@ class EntryAdmin(admin.ModelAdmin):
         """Filters the disposable authors"""
         if db_field.name == 'authors':
             if request.user.has_perm('zinnia.can_change_author'):
-                kwargs['queryset'] = User.objects.filter(is_staff=True)
+                kwargs['queryset'] = User.objects.filter()
             else:
                 kwargs['queryset'] = User.objects.filter(pk=request.user.pk)
 
