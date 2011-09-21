@@ -39,4 +39,4 @@ def entry_sluglink(request, slug):
 
     data = {'object': entry}
 
-    return render_to_response('entry_detail.html', data, context_instance=RequestContext(request))
+    return render_to_response('zinnia/entry_detail.html', data, context_instance=RequestContext(request))
