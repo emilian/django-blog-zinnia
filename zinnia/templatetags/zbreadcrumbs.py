@@ -50,10 +50,7 @@ MODEL_BREADCRUMBS = {'Tag': lambda x: [Crumb(_('Tags'),
                          _('Categories'), reverse('zinnia_category_list'))] + \
                      [Crumb(anc.title, anc.get_absolute_url())
                       for anc in x.get_ancestors()] + [Crumb(x.title)],
-                     'Entry': lambda x: [year_crumb(x.creation_date),
-                                         month_crumb(x.creation_date),
-                                         day_crumb(x.creation_date),
-                                         Crumb(x.title)]}
+                     'Entry': lambda x: [Crumb(x.title)]}
 
 DATE_REGEXP = re.compile(
     r'.*(?P<year>\d{4})/(?P<month>\d{2})?/(?P<day>\d{2})?.*')
@@ -72,6 +69,23 @@ def retrieve_breadcrumbs(path, model_instance, root_name=''):
         if key in MODEL_BREADCRUMBS:
             breadcrumbs.extend(MODEL_BREADCRUMBS[key](model_instance))
             return breadcrumbs
+
+    date_match = DATE_REGEXP.match(path)
+    if date_match:
+        date_dict = date_match.groupdict()
+        path_date = datetime(
+            int(date_dict['year']),
+            date_dict.get('month') is not None and \
+            int(date_dict.get('month')) or 1,
+            date_dict.get('day') is not None and \
+            int(date_dict.get('day')) or 1)
+
+        date_breadcrumbs = [year_crumb(path_date)]
+        if date_dict['month']:
+            date_breadcrumbs.append(month_crumb(path_date))
+        if date_dict['day']:
+            date_breadcrumbs.append(day_crumb(path_date))
+        breadcrumbs.extend(date_breadcrumbs)
 
         return breadcrumbs
 
