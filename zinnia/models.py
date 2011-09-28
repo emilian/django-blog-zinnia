@@ -39,9 +39,9 @@ from zinnia.signals import ping_directories_handler
 from zinnia.signals import ping_external_urls_handler
 
 try:
-    from django.conf.settings import BASE_PATH
+    from django.conf import settings
 except:
-    BASE_PATH = ''
+    settings.BASE_PATH = ''
 
 
 class Author(User):
@@ -257,7 +257,7 @@ class EntryAbstractClass(models.Model):
         """Return entry's URL"""
         #luglink', (), {'slug': self.slug})
 
-        return ("%s/content/%s") % (BASE_PATH, self.slug)
+        return ("%s/content/%s") % (settings.BASE_PATH, self.slug)
 
     class Meta:
         abstract = True
