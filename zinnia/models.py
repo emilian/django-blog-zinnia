@@ -98,7 +98,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         """Return category's URL"""
-        return ("%s/content/categories/%s") % (self.sites)
+        return ("%s/content/categories/%s") % (settings.BASE_PATH, self.slug)
 
     class Meta:
         """Category's Meta"""
