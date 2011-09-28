@@ -253,7 +253,6 @@ class EntryAbstractClass(models.Model):
     def __unicode__(self):
         return '%s: %s' % (self.title, self.get_status_display())
 
-    @models.permalink
     def get_absolute_url(self):
         """Return entry's URL"""
         #luglink', (), {'slug': self.slug})
