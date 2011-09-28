@@ -44,7 +44,7 @@ def entries_published(queryset):
 class CategoryManager(models.Manager):
     def on_site(self):
         """Return categories on current site"""
-        return super(CategorydManager, self).get_query_set(
+        return super(CategoryManager, self).get_query_set(
             ).filter(sites=Site.objects.get_current())
 
 
