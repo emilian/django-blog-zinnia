@@ -9,7 +9,7 @@ from zinnia.admin.forms import CategoryAdminForm
 class CategoryAdmin(admin.ModelAdmin):
     """Admin for Category model"""
     form = CategoryAdminForm
-    fields = ('title', 'parent', 'description', 'slug')
+    fields = ('title', 'parent', 'description', 'slug','sites')
     list_display = ('title', 'slug', 'get_tree_path', 'description')
     prepopulated_fields = {'slug': ('title', )}
     search_fields = ('title', 'description')
