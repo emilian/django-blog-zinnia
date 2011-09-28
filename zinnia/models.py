@@ -76,6 +76,9 @@ class Category(models.Model):
                                verbose_name=_('parent category'),
                                related_name='children')
 
+    sites = models.ManyToManyField(Site, verbose_name=_('sites publication'),
+                                   related_name='categories')
+
     def entries_published(self):
         """Return only the entries published"""
         return entries_published(self.entries)
@@ -90,7 +93,6 @@ class Category(models.Model):
     def __unicode__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
         """Return category's URL"""
         return ('zinnia_category_detail', (self.tree_path,))
