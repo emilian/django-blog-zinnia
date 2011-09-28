@@ -30,7 +30,7 @@ from zinnia.settings import MARKDOWN_EXTENSIONS
 from zinnia.settings import AUTO_CLOSE_COMMENTS_AFTER
 
 from zinnia.managers import entries_published
-from zinnia.managers import EntryPublishedManager
+from zinnia.managers import EntryPublishedManager, CategoryManager
 from zinnia.managers import AuthorPublishedManager
 from zinnia.managers import DRAFT, HIDDEN, PUBLISHED
 from zinnia.moderator import EntryCommentModerator
@@ -78,6 +78,9 @@ class Category(models.Model):
 
     sites = models.ManyToManyField(Site, verbose_name=_('sites publication'),
                                    related_name='categories')
+
+    objects = models.Manager()
+    published = CategoryManager()
 
     def entries_published(self):
         """Return only the entries published"""

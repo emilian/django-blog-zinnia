@@ -41,6 +41,12 @@ def entries_published(queryset):
                            end_publication__gt=now,
                            sites=Site.objects.get_current())
 
+class CategoryManager(models.Manager):
+    def on_site(self):
+        """Return categories on current site"""
+        return super(CategorydManager, self).get_query_set(
+            ).filter(sites=Site.objects.get_current())
+
 
 class EntryPublishedManager(models.Manager):
     """Manager to retrieve published entries"""

@@ -36,9 +36,9 @@ CACHE_ENTRIES_RELATED = {}
 
 @register.inclusion_tag('zinnia/tags/dummy.html')
 def get_categories(template='zinnia/tags/categories.html'):
-    """Return the categories"""
+    """Return the categories for current site """
     return {'template': template,
-            'categories': Category.tree.all()}
+            'categories': Category.published.on_site()}
 
 
 @register.inclusion_tag('zinnia/tags/dummy.html')
