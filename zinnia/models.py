@@ -28,6 +28,7 @@ from zinnia.settings import ENTRY_TEMPLATES
 from zinnia.settings import ENTRY_BASE_MODEL
 from zinnia.settings import MARKDOWN_EXTENSIONS
 from zinnia.settings import AUTO_CLOSE_COMMENTS_AFTER
+
 from zinnia.managers import entries_published
 from zinnia.managers import EntryPublishedManager
 from zinnia.managers import AuthorPublishedManager
@@ -36,6 +37,11 @@ from zinnia.moderator import EntryCommentModerator
 from zinnia.url_shortener import get_url_shortener
 from zinnia.signals import ping_directories_handler
 from zinnia.signals import ping_external_urls_handler
+
+try:
+    from django.conf.settings import BASE_PATH
+except:
+    BASE_PATH = ''
 
 
 class Author(User):
@@ -250,7 +256,9 @@ class EntryAbstractClass(models.Model):
     @models.permalink
     def get_absolute_url(self):
         """Return entry's URL"""
-        return ('zinnia_entry_sluglink', (), {'slug': self.slug})
+        #luglink', (), {'slug': self.slug})
+
+        return ("%s/content/%s") % (BASE_PATH, self.slug)
 
     class Meta:
         abstract = True
