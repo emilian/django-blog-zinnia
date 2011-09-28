@@ -98,7 +98,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         """Return category's URL"""
-        return ('zinnia_category_detail', (self.tree_path,))
+        return ("%s/content/categories/%s") % (self.sites)
 
     class Meta:
         """Category's Meta"""

@@ -4,7 +4,7 @@ from django.conf.urls.defaults import patterns
 
 from zinnia.models import Category
 
-category_conf = {'queryset': Category.tree.all()}
+category_conf = {'queryset': Category.published.on_site()}
 
 urlpatterns = patterns('django.views.generic.list_detail',
                        url(r'^$', 'object_list',
