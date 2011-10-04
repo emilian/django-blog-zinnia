@@ -1,4 +1,5 @@
 """Views for Zinnia entries"""
+from django.http import Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.shortcuts import redirect
@@ -35,7 +36,10 @@ def entry_shortlink(request, object_id):
     return redirect(entry, permanent=True)
 
 def entry_sluglink(request, slug):
-    entry = get_object_or_404(Entry, slug=slug)
+    try:
+        entry = Entry.published.on_site(slug=slug)
+    except Entry.DoesNotExist, Entry.MultipleObjectsReturned:
+        raise Http404
 
     data = {'object': entry}
 
