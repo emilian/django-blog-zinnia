@@ -99,7 +99,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         """Return category's URL"""
         site = self.sites.all()[0]
-        return ("http://%s/content/categories/%s") % (site.domain, self.slug)
+        return ("/content/categories/%s") % (self.slug)
 
     class Meta:
         """Category's Meta"""
@@ -264,7 +264,7 @@ class EntryAbstractClass(models.Model):
         #luglink', (), {'slug': self.slug})
         site = self.sites.all()[0]
 
-        return ("http://%s/content/%s") % (site.domain, self.slug)
+        return ("/content/%s") % (self.slug)
 
     class Meta:
         abstract = True
