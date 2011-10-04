@@ -37,7 +37,7 @@ def entry_shortlink(request, object_id):
 
 def entry_sluglink(request, slug):
     try:
-        entry = Entry.published.on_site(slug=slug)
+        entry = Entry.published.on_site().filter(slug=slug)
     except Entry.DoesNotExist, Entry.MultipleObjectsReturned:
         raise Http404
 
