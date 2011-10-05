@@ -98,7 +98,6 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         """Return category's URL"""
-        site = self.sites.all()[0]
         return ("/content/categories/%s") % (self.slug)
 
     class Meta:
@@ -261,8 +260,6 @@ class EntryAbstractClass(models.Model):
 
     def get_absolute_url(self):
         """Return entry's URL"""
-        #luglink', (), {'slug': self.slug})
-        site = self.sites.all()[0]
 
         return ("/content/%s") % (self.slug)
 
