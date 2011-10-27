@@ -259,7 +259,7 @@ def zinnia_pagination(context, page, begin_pages=3, end_pages=3,
         middle = []
 
     return {'template': template, 'page': page, 'GET_string': GET_string,
-            'begin': begin, 'middle': middle, 'end': end}
+            'begin': begin, 'middle': middle, 'end': end, 'context':context}
 
 
 @register.inclusion_tag('zinnia/tags/dummy.html', takes_context=True)
