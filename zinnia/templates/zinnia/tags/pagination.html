@@ -3,7 +3,7 @@
   <span class="index">
     {% blocktrans with page.number as current_page and page.paginator.num_pages as total_page %}Page {{ current_page }} of {{ total_page }}{% endblocktrans %}
   </span>
-{{ request.get_full_path }}
+{{ request.build_absolute_uri }}
   {% if page.has_previous %}
   <span class="previous">
     <a href="{{ request.get_full_path }}?page={{ page.previous_page_number }}{{ GET_string }}"
