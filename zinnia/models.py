@@ -150,6 +150,9 @@ class EntryAbstractClass(models.Model):
                                            help_text=_('date end publish'),
                                            default=datetime(2042, 3, 15))
 
+    meta_keywords = models.TextField(_('Meta keywords'), blank=True, null=True)
+    meta_description = models.TextField(_('Meta description'), blank=True, null=True)
+
     sites = models.ManyToManyField(Site, verbose_name=_('sites publication'),
                                    related_name='entries')
 
