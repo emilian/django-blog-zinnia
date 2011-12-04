@@ -36,6 +36,7 @@ class EntryAdmin(admin.ModelAdmin):
                                  'classes': ('collapse', 'collapse-closed')}),
                  (_('Discussion'), {'fields': ('comment_enabled',
                                                'pingback_enabled')}),
+                 (_('Search Engine Optimization'), {'fields': ('meta_keywords','meta_description')}),
                  (_('Publication'), {'fields': ('categories', 'tags',
                                                 'sites', 'slug')}))
     list_filter = ('categories', 'authors', 'status', 'featured',
