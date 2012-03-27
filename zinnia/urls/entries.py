@@ -3,7 +3,6 @@ from django.conf.urls.defaults import url
 from django.conf.urls.defaults import patterns
 
 from zinnia.models import Entry
-from zinnia.settings import PAGINATION
 from zinnia.settings import ALLOW_EMPTY
 from zinnia.settings import ALLOW_FUTURE
 
