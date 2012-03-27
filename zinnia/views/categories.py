@@ -16,7 +16,7 @@ def get_category_or_404(path):
 def category_detail(request, path, page=None, **kwargs):
     """Display the entries of a category"""
     extra_context = kwargs.pop('extra_context', {})
-    assert False
+
     category = get_category_or_404(path)
     if not kwargs.get('template_name'):
         kwargs['template_name'] = template_name_for_entry_queryset_filtered(
