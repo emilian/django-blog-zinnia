@@ -1,8 +1,8 @@
 """Views for Zinnia entries"""
-from django.http import Http404
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.shortcuts import redirect
+from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic.list_detail import object_list
 from django.views.generic.date_based import archive_year
@@ -49,7 +49,7 @@ def entry_sluglink(request, slug):
             redirect = Redirect.objects.get(sites=current_site, old_slug=slug)
             new_slug = redirect.new_slug
 
-            return redirect('zinnia_entry_sluglink', permanent=True, slug=str(new_slug))
+            return HttpResponsePermanentRedirect(reverse('zinnia_entry_sluglink'), kwargs={'slug':new_slug})
 
         except Redirect.DoesNotExist:
             raise Http404
