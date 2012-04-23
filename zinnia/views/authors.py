@@ -3,7 +3,6 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.list_detail import object_list
 
 from zinnia.models import Author
-from zinnia.settings import PAGINATION
 from zinnia.views.decorators import update_queryset
 from zinnia.views.decorators import template_name_for_entry_queryset_filtered
 
@@ -24,5 +23,4 @@ def author_detail(request, username, page=None, **kwargs):
     kwargs['extra_context'] = extra_context
 
     return object_list(request, queryset=author.entries_published(),
-                       paginate_by=PAGINATION, page=page,
                        **kwargs)

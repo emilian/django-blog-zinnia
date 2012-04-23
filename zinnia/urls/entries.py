@@ -3,12 +3,10 @@ from django.conf.urls.defaults import url
 from django.conf.urls.defaults import patterns
 
 from zinnia.models import Entry
-from zinnia.settings import PAGINATION
 from zinnia.settings import ALLOW_EMPTY
 from zinnia.settings import ALLOW_FUTURE
 
-entry_conf_index = {'paginate_by': PAGINATION,
-                    'template_name': 'zinnia/entry_archive.html'}
+entry_conf_index = {'template_name': 'zinnia/entry_archive.html'}
 
 entry_conf = {'date_field': 'creation_date',
               'allow_empty': ALLOW_EMPTY,
