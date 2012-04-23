@@ -15,6 +15,8 @@ from zinnia.models import Entry, Redirect
 from zinnia.views.decorators import protect_entry
 from zinnia.views.decorators import update_queryset
 
+from django.contrib.sites.models import Site
+
 
 entry_index = update_queryset(object_list, Entry.published.all)
 
@@ -42,7 +44,15 @@ def entry_sluglink(request, slug):
         raise Http404
     except IndexError:
         # look for 301 redirects
-        pass
+        try:
+            current_site = Site.objects.get_current()
+            redirect = Redirect.objects.filter(sites=current_site, old_slug=slug)
+
+            return redirect('zinnia_entry_sluglink', slug=redirect.new_slug, permanent=True)
+
+        except Redirect.DoesNotExist:
+            raise Http404
+
 
     data = {'object': entry}
 
