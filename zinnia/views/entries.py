@@ -46,7 +46,7 @@ def entry_sluglink(request, slug):
         # look for 301 redirects
         try:
             current_site = Site.objects.get_current()
-            redirect = Redirect.objects.filter(sites=current_site, old_slug=slug)
+            redirect = Redirect.objects.get(sites=current_site, old_slug=slug)
 
             return redirect('zinnia_entry_sluglink', slug=redirect.new_slug, permanent=True)
 
