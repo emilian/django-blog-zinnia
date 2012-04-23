@@ -42,7 +42,7 @@ def entry_sluglink(request, slug):
         raise Http404
     except IndexError:
         # look for 301 redirects
-
+        pass
 
     data = {'object': entry}
 
