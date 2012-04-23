@@ -49,7 +49,7 @@ def entry_sluglink(request, slug):
             redirect = Redirect.objects.get(sites=current_site, old_slug=slug)
             new_slug = redirect.new_slug
 
-            return redirect('zinnia_entry_sluglink', slug=str(new_slug), permanent=True)
+            return redirect('zinnia_entry_sluglink', permanent=True, slug=str(new_slug))
 
         except Redirect.DoesNotExist:
             raise Http404
