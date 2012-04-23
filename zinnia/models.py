@@ -43,6 +43,11 @@ try:
 except:
     settings.BASE_PATH = ''
 
+class Redirect(models.Model):
+    old_slug = models.CharField(max_length=255)
+    new_slug = models.CharField(max_length=255)
+    sites = models.ManyToManyField(Site, verbose_name=_('sites publication'),
+        related_name='entries')
 
 class Author(User):
     """Proxy Model around User"""

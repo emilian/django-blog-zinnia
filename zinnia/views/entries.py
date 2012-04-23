@@ -11,7 +11,7 @@ from django.views.generic.date_based import archive_day
 from django.views.generic.date_based import object_detail
 
 
-from zinnia.models import Entry
+from zinnia.models import Entry, Redirect
 from zinnia.views.decorators import protect_entry
 from zinnia.views.decorators import update_queryset
 
@@ -40,6 +40,9 @@ def entry_sluglink(request, slug):
         entry = Entry.published.on_site().filter(slug=slug)[0]
     except Entry.DoesNotExist:
         raise Http404
+    except IndexError:
+        # look for 301 redirects
+
 
     data = {'object': entry}
 
