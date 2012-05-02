@@ -26,7 +26,7 @@ def update_queryset(view, queryset,
         """Regenerate the queryset before passing it to the view."""
         kwargs[queryset_parameter] = queryset()
 
-        if kwargs['template_name']:
+        if 'template_name' in kwargs:
             kwargs['template_name'] = template_name
 
         return view(*args, **kwargs)
