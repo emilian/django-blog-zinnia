@@ -11,6 +11,8 @@ from django.template import TemplateDoesNotExist
 from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.cache import never_cache
 
+from django.contrib.sites.models import Site
+
 
 def update_queryset(view, queryset,
                     queryset_parameter='queryset'):
