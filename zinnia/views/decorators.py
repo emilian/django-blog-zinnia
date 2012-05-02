@@ -68,6 +68,13 @@ def protect_entry(view):
 
     return wrapper
 
+def template_name_current_site(template_name):
+    current_site = Site.objects.get_current()
+
+    subdomain = current_site.name.split('.')[0]
+
+    return 'zinnia/%s/%s' % (subdomain, template_name)
+
 
 def template_name_for_entry_queryset_filtered(model_type, model_name):
     """Return a custom template name for views

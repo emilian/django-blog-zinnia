@@ -13,7 +13,7 @@ from django.views.generic.date_based import object_detail
 
 from zinnia.models import Entry, Redirect
 from zinnia.views.decorators import protect_entry
-from zinnia.views.decorators import update_queryset
+from zinnia.views.decorators import update_queryset, template_name_current_site
 
 from django.contrib.sites.models import Site
 
@@ -57,4 +57,4 @@ def entry_sluglink(request, slug):
 
     data = {'object': entry}
 
-    return render_to_response('zinnia/entry_detail.html', data, context_instance=RequestContext(request))
+    return render_to_response(template_name_current_site('entry_detail.html'), data, context_instance=RequestContext(request))
