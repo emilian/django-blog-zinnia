@@ -23,5 +23,7 @@ def category_detail(request, path, page=None, **kwargs):
     extra_context.update({'category': category})
     kwargs['extra_context'] = extra_context
 
+    assert False, kwargs
+
     return object_list(request, queryset=category.entries_published(),
                        **kwargs)
