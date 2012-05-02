@@ -15,7 +15,7 @@ from django.contrib.sites.models import Site
 
 
 def update_queryset(view, queryset,
-                    queryset_parameter='queryset'):
+                    queryset_parameter='queryset', template_name=None):
     """Decorator around views based on a queryset
     passed in parameter, who will force the update
     of the queryset before executing the view.
