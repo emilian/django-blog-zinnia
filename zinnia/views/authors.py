@@ -4,7 +4,7 @@ from django.views.generic.list_detail import object_list
 
 from zinnia.models import Author
 from zinnia.views.decorators import update_queryset
-from zinnia.views.decorators import template_name_for_entry_queryset_filtered
+from zinnia.views.decorators import template_name_current_site
 
 
 author_list = update_queryset(object_list, Author.published.all)
@@ -16,8 +16,7 @@ def author_detail(request, username, page=None, **kwargs):
 
     author = get_object_or_404(Author, username=username)
     if not kwargs.get('template_name'):
-        kwargs['template_name'] = template_name_for_entry_queryset_filtered(
-            'author', author.username)
+        kwargs['template_name'] = template_name_current_site('entry_list.html')
 
     extra_context.update({'author': author})
     kwargs['extra_context'] = extra_context

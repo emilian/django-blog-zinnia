@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic.list_detail import object_list
 
 from zinnia.models import Category
-from zinnia.views.decorators import template_name_for_entry_queryset_filtered
+from zinnia.views.decorators import template_name_current_site
 
 
 def get_category_or_404(path):
@@ -18,8 +18,7 @@ def category_detail(request, path, page=None, **kwargs):
 
     category = get_category_or_404(path)
     if not kwargs.get('template_name'):
-        kwargs['template_name'] = template_name_for_entry_queryset_filtered(
-            'category', category.slug)
+        kwargs['template_name'] = template_name_current_site('entry_list.html')
 
     extra_context.update({'category': category})
     kwargs['extra_context'] = extra_context
