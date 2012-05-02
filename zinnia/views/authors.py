@@ -7,7 +7,7 @@ from zinnia.views.decorators import update_queryset
 from zinnia.views.decorators import template_name_current_site
 
 
-author_list = update_queryset(object_list, Author.published.all)
+author_list = update_queryset(object_list, Author.published.all, template_name=template_name_current_site('author_list.html'))
 
 
 def author_detail(request, username, page=None, **kwargs):
