@@ -6,7 +6,9 @@ from zinnia.models import Entry
 from zinnia.settings import ALLOW_EMPTY
 from zinnia.settings import ALLOW_FUTURE
 
-entry_conf_index = {'template_name': 'zinnia/entry_archive.html'}
+from zinnia.views.decorators import template_name_current_site
+
+entry_conf_index = {'template_name': template_name_current_site('entry_archive.html')}
 
 entry_conf = {'date_field': 'creation_date',
               'allow_empty': ALLOW_EMPTY,
