@@ -28,6 +28,7 @@ def update_queryset(view, queryset,
 
         if 'template_name' in kwargs:
             kwargs['template_name'] = template_name
+            assert False, kwargs
 
         return view(*args, **kwargs)
 
