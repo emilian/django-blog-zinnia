@@ -1,6 +1,7 @@
 """Views for Zinnia entries search"""
 from django.utils.translation import ugettext as _
 from django.views.generic.list_detail import object_list
+from zinnia.views.decorators import update_queryset, template_name_current_site
 
 from zinnia.models import Entry
 from zinnia.settings import PAGINATION
@@ -23,6 +24,6 @@ def entry_search(request):
 
     return object_list(request, queryset=entries,
                        paginate_by=PAGINATION,
-                       template_name='zinnia/entry_search.html',
+                       template_name=template_name_current_site('zinnia/entry_search.html'),
                        extra_context={'error': error,
                                       'pattern': pattern})
