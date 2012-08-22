@@ -100,10 +100,11 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.title
-
+        
+    @models.permalink
     def get_absolute_url(self):
         """Return category's URL"""
-        return ("/content/categories/%s") % (self.slug)
+        return ('category_detail', (self.slug,))
 
     class Meta:
         """Category's Meta"""
@@ -265,11 +266,12 @@ class EntryAbstractClass(models.Model):
 
     def __unicode__(self):
         return '%s: %s' % (self.title, self.get_status_display())
-
+    
+    @models.permalink
     def get_absolute_url(self):
         """Return entry's URL"""
 
-        return ("/content/%s") % (self.slug)
+        return ('entry_sluglink', (self.slug,))
 
     class Meta:
         abstract = True
