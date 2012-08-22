@@ -7,7 +7,7 @@ PING_DIRECTORIES = getattr(settings, 'ZINNIA_PING_DIRECTORIES',
 SAVE_PING_DIRECTORIES = getattr(settings, 'ZINNIA_SAVE_PING_DIRECTORIES',
                                 bool(PING_DIRECTORIES))
 SAVE_PING_EXTERNAL_URLS = getattr(settings, 'ZINNIA_PING_EXTERNAL_URLS', True)
-
+ROOT_BREADCRUMB_NAME = getattr(settings, 'ZINNIA_ROOT_BREADCRUMB_NAME', 'Content')
 COPYRIGHT = getattr(settings, 'ZINNIA_COPYRIGHT', 'Zinnia')
 
 PAGINATION = getattr(settings, 'ZINNIA_PAGINATION', 10)
