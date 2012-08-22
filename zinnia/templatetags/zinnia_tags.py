@@ -26,6 +26,8 @@ from zinnia.comparison import pearson_score
 from zinnia.templatetags.zcalendar import ZinniaCalendar
 from zinnia.templatetags.zbreadcrumbs import retrieve_breadcrumbs
 
+from zinnia.settings import ROOT_BREADCRUMB_NAME
+
 register = Library()
 
 VECTORS = None
@@ -263,7 +265,7 @@ def zinnia_pagination(context, page, begin_pages=3, end_pages=3,
 
 
 @register.inclusion_tag('zinnia/tags/dummy.html', takes_context=True)
-def zinnia_breadcrumbs(context, separator='/', root_name='Content',
+def zinnia_breadcrumbs(context, separator='/', root_name=ROOT_BREADCRUMB_NAME,
                        template='zinnia/tags/breadcrumbs.html',):
     """Return a breadcrumb for the application"""
     path = context['request'].path
