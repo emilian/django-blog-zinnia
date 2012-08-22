@@ -104,7 +104,7 @@ class Category(models.Model):
     @models.permalink
     def get_absolute_url(self):
         """Return category's URL"""
-        return ('category_detail', (self.slug,))
+        return ('zinnia_category_detail', (self.slug,))
 
     class Meta:
         """Category's Meta"""
@@ -271,7 +271,7 @@ class EntryAbstractClass(models.Model):
     def get_absolute_url(self):
         """Return entry's URL"""
 
-        return ('entry_sluglink', (self.slug,))
+        return ('zinnia_entry_sluglink', (self.slug,))
 
     class Meta:
         abstract = True
